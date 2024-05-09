@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect, useRef } from 'react';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux-store/hooks';
 import axios from 'axios';
 import auction, { AuctionRoomResponse, CategoryListResponse, Category } from '../../api/auction';
 import {
@@ -10,8 +10,8 @@ import {
   setItemPermissionChecked,
   resetAuctionUpdate,
   setAuctionItem,
-} from '../../store/slices/auctionUpdateSlice';
-import { resetItemImg } from '../../store/slices/auctionUpdateItemImgSlice';
+} from '../../redux-store/slices/auctionUpdateSlice';
+import { resetItemImg } from '../../redux-store/slices/auctionUpdateItemImgSlice';
 
 import { ROOT } from '../util/http';
 import { useNavigate } from 'react-router-dom';

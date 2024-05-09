@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import main, { AuctionRoomListResponse, BookmarkStatusRequest } from '../../api/main';
 import auction from '../../api/auction';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 import { useLocation } from 'react-router-dom';
 
 export function useMainBox() {

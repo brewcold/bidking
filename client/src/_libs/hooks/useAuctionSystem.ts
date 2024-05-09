@@ -2,7 +2,7 @@ import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { Socket } from 'socket.io-client';
 import { LiveItem, liveItemList } from '../../api/live';
 import { arrayPadding } from '../util/arrayPadding';
-import { DUMMY } from '../components/auctionSystem/auctionItemList/AuctionItemStatus';
+import { DUMMY } from '../components/liveAuctionSystem/auctionItemStatus/AuctionItemStatus';
 import { bidPriceParse } from '../util/bidPriceParse';
 import { Navigate, useNavigate } from 'react-router-dom';
 

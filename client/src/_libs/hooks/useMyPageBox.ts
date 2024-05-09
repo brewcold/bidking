@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect, ChangeEvent } from 'react';
 import member from '../../api/member';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 import { ROOT } from '../util/http';
 import { useNavigate } from 'react-router-dom';
 
