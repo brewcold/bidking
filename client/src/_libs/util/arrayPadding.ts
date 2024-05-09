@@ -1,8 +1,6 @@
-import { LiveItem, liveItemList } from '../../api/live';
-
-export function arrayPadding(arr: liveItemList, pad: LiveItem, padding: number) {
+export function arrayPadding<T>(arr: T[], pad: T, paddingLength: number): T[] {
   const list = [...arr];
-  for (let i = 0; i < padding; i++) {
+  for (let i = 0; i < paddingLength; i++) {
     list.push(pad);
     list.unshift(pad);
   }
