@@ -7,7 +7,7 @@ import { Spacing } from '../common/Spacing';
 import { TextArea } from '../common/TextArea';
 import { useAuctionUpdateCreateCard } from '../../hooks/useAuctionUpdateCreateCard';
 import { Select, SelectOption } from '../common/SelectOption';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppSelector } from '../../../redux-store/hooks';
 import { InputFile } from '../common/InputFile';
 
 interface Props {
