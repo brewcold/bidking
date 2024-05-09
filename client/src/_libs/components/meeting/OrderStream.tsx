@@ -4,9 +4,11 @@ import { StreamManager } from 'openvidu-browser';
 import { useOrderStream } from '../../hooks/useOrderStream';
 import { Text } from '../common/Text';
 import colors from '../../design/colors';
+import { useLiveInfo } from '../../hooks/useLiveInfo';
 
-export function OrderStream({ auctionRoomId, userId, userType }: Props) {
-  const { streamList } = useOrderStream(userId, auctionRoomId);
+export function OrderStream() {
+  const { userId, roomInfo } = useLiveInfo();
+  const { streamList } = useOrderStream(userId || -1, roomInfo?.auctionRoomId || -1);
   const sellerStreamManager = streamList.find(stream => stream.userId !== userId)?.streamManager;
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -49,10 +51,4 @@ export function OrderStream({ auctionRoomId, userId, userType }: Props) {
       )}
     </div>
   );
-}
-
-interface Props {
-  auctionRoomId: number;
-  userId: number;
-  userType: 'order' | 'seller';
 }

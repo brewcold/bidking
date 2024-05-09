@@ -2,14 +2,20 @@
 import { Publisher } from 'openvidu-browser';
 import React, { useEffect, useState } from 'react';
 import colors from '../../design/colors';
+import { useLiveInfo } from '../../hooks/useLiveInfo';
 import { useSellerStream } from '../../hooks/useSellerStream';
 import { useStream } from '../../hooks/useStream';
 import { RoundButton } from '../common/RoundButton';
 import { Spacing } from '../common/Spacing';
 import { Text } from '../common/Text';
 
-export function SellerStream({ auctionRoomId, userId }: Props) {
-  const { publisher, onChangeCameraStatus, onChangeMicStatus, leaveSession } = useSellerStream(userId, auctionRoomId);
+export function SellerStream() {
+  const { userId, roomInfo } = useLiveInfo();
+
+  const { publisher, onChangeCameraStatus, onChangeMicStatus, leaveSession } = useSellerStream(
+    userId || -1,
+    roomInfo?.auctionRoomId || -1
+  );
   const { speaking, micStatus, videoStatus, videoRef } = useStream(publisher || undefined);
 
   const [mic, setMic] = useState<boolean | null | undefined>(null);
@@ -82,9 +88,4 @@ export function SellerStream({ auctionRoomId, userId }: Props) {
       )}
     </div>
   );
-}
-
-interface Props {
-  auctionRoomId: number;
-  userId: number;
 }
