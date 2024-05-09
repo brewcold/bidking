@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { DashBoard } from '../../_libs/components/common/DashBoard';
 import order, { DashBoardResponce } from '../../api/order';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 import { OrderItemResponse } from '../../api/order';
 import { ItemPurchased } from '../../_libs/components/auctionPurchased/ItemPurchased';
 import { Text } from '../../_libs/components/common/Text';

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import React, { HTMLAttributes, useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import auction, { AuctionRoomResponse } from '../../api/auction';
 import { ItemCard } from '../../_libs/components/auctionInfo/ItemCard';
 import { Spacing } from '../../_libs/components/common/Spacing';
@@ -12,7 +12,7 @@ import { Checkbox } from '../../_libs/components/common/Checkbox';
 import auctionRoomLiveState from '../../_libs/constants/auctionRoomLiveState';
 import { detailDateParse } from '../../_libs/util/detailDateParse';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 
 export function Detail() {
   const params = useParams<string>();

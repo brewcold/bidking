@@ -4,7 +4,7 @@ import colors from '../../design/colors';
 import { Text } from '../common/Text';
 import { ProfileImage } from '../common/ProfileImage';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppSelector } from '../../../redux-store/hooks';
 import { Checkbox } from '../common/Checkbox';
 import { Spacing } from '../common/Spacing';
 import alarm, { AlarmResponse, ReadRequest } from '../../../api/alarm';
