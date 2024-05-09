@@ -41,8 +41,10 @@ export const useSocketEmitter = <T extends socketEmitRequest>(event: string, dat
 
   useEffect(() => {
     try {
-      socket.emit(event, { data });
-      setError([]);
+      {
+        socket.emit(event, { data });
+        setError([]);
+      }
     } catch (error) {
       setError([...err, error]);
     }
@@ -52,4 +54,32 @@ export const useSocketEmitter = <T extends socketEmitRequest>(event: string, dat
   }, [socket, event, roomId]);
 
   return { error: err };
+};
+
+export const useSocketEmitterWithTrigger = <T extends socketEmitRequest>(event: string, data: T) => {
+  const [err, setError] = useState<unknown[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const trigger = () => setLoading(true);
+  const socket = useContext(SocketContext);
+  const roomId = data.roomId;
+
+  useEffect(() => {
+    if (loading)
+      try {
+        {
+          socket.emit(event, { data });
+          setError([]);
+        }
+      } catch (error) {
+        setError([...err, error]);
+      } finally {
+        setLoading(false);
+      }
+    return () => {
+      socket.emit('leaveRoom', { roomId });
+    };
+  }, [socket, event, roomId, loading]);
+
+  return { error: err, trigger };
 };
