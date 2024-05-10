@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { DashBoard } from '../../_libs/components/common/DashBoard';
 import order, { DashBoardResponce } from '../../api/order';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 import { PurchasedBox } from './PurchasedBox';
 import colors from '../../_libs/design/colors';
 import { Spacing } from '../../_libs/components/common/Spacing';

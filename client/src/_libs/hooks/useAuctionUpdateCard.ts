@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { addItemToList } from '../../store/slices/auctionUpdateSlice';
-import { setItemImg } from '../../store/slices/auctionUpdateItemImgSlice';
+import { useAppDispatch, useAppSelector } from '../../redux-store/hooks';
+import { addItemToList } from '../../redux-store/slices/auctionUpdateSlice';
+import { setItemImg } from '../../redux-store/slices/auctionUpdateItemImgSlice';
 import axios from 'axios';
 import auction from '../../api/auction';
 

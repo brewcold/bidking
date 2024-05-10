@@ -12,9 +12,11 @@ export function askingPriceParse(price: number): string {
 
 /**숫자만 입력했는지 검증합니다. */
 export function validateBidPrice(price: string): boolean {
+  const input = price.trim();
+  if (input.trim().length < 1) return false;
   const check = /^\d+$/;
-  if (!check.test(price)) return false;
-  if (price.length > 12) return false;
+  if (!check.test(input)) return false;
+  if (input.length > 12) return false;
   return true;
 }
 

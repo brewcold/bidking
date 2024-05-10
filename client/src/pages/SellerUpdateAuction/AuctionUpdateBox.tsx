@@ -11,8 +11,6 @@ import { Checkbox } from '../../_libs/components/common/Checkbox';
 import { useAuctionUpdateBox } from '../../_libs/hooks/useAuctionUpdateBox';
 import { RadioButton } from '../../_libs/components/common/RadioButton';
 import { Image } from '../../_libs/components/common/Image';
-import { AuctionUpdateCreateCard } from '../../_libs/components/auctionUpdate/AuctionUpdateCreateCard';
-import { useAppSelector } from '../../store/hooks';
 import { RoundButton } from '../../_libs/components/common/RoundButton';
 import { Link } from 'react-router-dom';
 import { InputFile } from '../../_libs/components/common/InputFile';

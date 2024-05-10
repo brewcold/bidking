@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import auction, { SellerAuctionRoomListResponse, ItemListDto } from '../../api/auction';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 import seller, { SellerDashBoardResponce } from '../../api/seller';
 
 export function useSellerBox() {

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect } from 'react';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 import alarm, { AlarmResponse } from '../../api/alarm';
 import { ReadRequest } from '../../api/alarm';
 import { useQuery } from 'react-query';

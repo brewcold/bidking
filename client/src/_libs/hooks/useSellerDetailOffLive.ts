@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import auction, { SellerAuctionDetail } from '../../api/auction';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../redux-store/hooks';
 
 export function useSellerDetailOffLive() {
   const params = useParams<string>();

@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent, MouseEvent, useRef } from 'react';
 import member from '../../api/member';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { setUserInformation } from '../../store/slices/userSlice';
+import { useAppDispatch, useAppSelector } from '../../redux-store/hooks';
+import { setUserInformation } from '../../redux-store/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 export function useLogin() {

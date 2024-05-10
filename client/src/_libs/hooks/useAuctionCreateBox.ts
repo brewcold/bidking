@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux-store/hooks';
 import axios from 'axios';
 import {
   setAuctionTitle,
@@ -8,10 +8,10 @@ import {
   setDeliveryRulesChecked,
   setItemPermissionChecked,
   resetAuctionCreate,
-} from '../../store/slices/auctionCreateSlice';
+} from '../../redux-store/slices/auctionCreateSlice';
 import { ROOT } from '../util/http';
 import { useNavigate } from 'react-router-dom';
-import { resetItemImg } from '../../store/slices/auctionCreateItemImgSlice';
+import { resetItemImg } from '../../redux-store/slices/auctionCreateItemImgSlice';
 
 export function useAuctionCreateBox() {
   const dispatch = useAppDispatch();
