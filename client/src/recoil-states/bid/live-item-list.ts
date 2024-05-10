@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 import { LiveItemResponse } from '../../_libs/types/live-item';
 
-const key = 'liveItemStatus';
+const key = 'liveItemList';
 
 const liveItemList = atom<LiveItemResponse>({
   key,

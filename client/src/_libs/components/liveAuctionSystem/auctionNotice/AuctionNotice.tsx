@@ -9,14 +9,14 @@ import { RoundButton } from '../../common/RoundButton';
 import { bidPriceParse } from '../../../util/bidPriceParse';
 import { useSocketEmitter, useSocketListener } from '../../../hooks/useSocket';
 import { useRecoilValue } from 'recoil';
-import { liveItemStatusSelector } from '../../../../recoil-states/bid/live-item-list';
+import { liveItemListSelector } from '../../../../recoil-states/bid/live-item-list';
 import { NoticeResponse } from '../../../types/chat';
 import { BidFailResponse, BidSuccessResponse } from '../../../types/bid';
 import { useLiveInfo } from '../../../hooks/useLiveInfo';
 
 export function AuctionNotice() {
   const { roomInfo } = useLiveInfo();
-  const itemList = useRecoilValue(liveItemStatusSelector);
+  const itemList = useRecoilValue(liveItemListSelector);
 
   const [notice, setNotice] = useState<string[]>(['']);
   const [noticeInput, setNoticeInput] = useState<string>('');

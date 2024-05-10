@@ -1,12 +1,12 @@
 import { useRecoilValue } from 'recoil';
 import { currentItemSelector } from '../../../../../recoil-states/bid/current-item-id';
-import { liveItemStatus } from '../../../../../recoil-states/bid/live-item-list';
+import { liveItemListSelector } from '../../../../../recoil-states/bid/live-item-list';
 
 import { View } from '../../../common/View';
 import { AuctionItem } from './AuctionItem';
 
 export function AuctionItemList() {
-  const itemList = useRecoilValue(liveItemStatus);
+  const itemList = useRecoilValue(liveItemListSelector);
   const IS_ITEM = useRecoilValue(currentItemSelector);
 
   return (

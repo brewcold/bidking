@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { currentBidProcessSelector } from '../../../../../recoil-states/bid/current-order';
-import { liveItemStatus } from '../../../../../recoil-states/bid/live-item-list';
+import { liveItemListSelector } from '../../../../../recoil-states/bid/live-item-list';
 import { useLiveInfo } from '../../../../hooks/useLiveInfo';
 import { bidPriceParse } from '../../../../util/bidPriceParse';
 import { Spacing } from '../../../common/Spacing';
@@ -23,7 +23,7 @@ export function AuctionStatusText() {
 
 AuctionStatusText.OnLive = () => {
   const { roomInfo } = useLiveInfo();
-  const itemList = useRecoilValue(liveItemStatus);
+  const itemList = useRecoilValue(liveItemListSelector);
 
   return (
     <View>
