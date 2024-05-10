@@ -1,25 +1,24 @@
 import { CSSInterpolation } from '@emotion/serialize';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import colors from '../../design/colors';
+import { Spacing } from './Spacing';
 import { Txt } from './Txt';
 import { View } from './View';
 
 type Props = {
-  show: boolean;
+  close: () => void;
   type?: 'success' | 'error';
   duration?: number;
 } & PropsWithChildren;
 
-export function Alert({ children, show, type = 'error' }: Props) {
-  // useEffect(() => {
-  //   //useDisplayAnimation을 통한 refactoring
-  //   const timer = setTimeout(() => {
-  //     setAlert(Alert);
-  //     setIsOpen(true);
-  //   }, duration);
+export function Alert({ children, close, type = 'error' }: Props) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      close();
+    }, 2000);
 
-  //   return () => clearTimeout(timer);
-  // }, [duration]);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <View css={BASE(type)}>
