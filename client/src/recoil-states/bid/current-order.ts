@@ -1,7 +1,7 @@
 import { objectKeys } from '@syyu/util';
 import { atom, selector } from 'recoil';
 import { itemState } from '../../_libs/types/item-state';
-import { liveItemLengthSelector } from './live-item-status';
+import { liveItemLengthSelector } from './live-item-list';
 
 const key = 'currentOrder';
 

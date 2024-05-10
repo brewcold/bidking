@@ -12,10 +12,11 @@ import { BidWon } from './BidWon';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   align: 'left' | 'right' | 'center';
   theme: 'dark' | 'light';
-  priceArr: string[];
+  price: number;
 }
 
-export function BidPrice({ align = 'center', theme = 'light', priceArr }: Props) {
+export function BidPrice({ align = 'center', theme = 'light', price }: Props) {
+  const priceArr = bidPriceParse(price).split('');
   return (
     <div css={{ width: '100%', height: '2rem', position: 'relative' }}>
       <div

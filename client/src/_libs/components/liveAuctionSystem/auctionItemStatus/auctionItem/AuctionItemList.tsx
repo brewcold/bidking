@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { currentItemSelector } from '../../../../../recoil-states/bid/current-item-id';
-import { liveItemStatus } from '../../../../../recoil-states/bid/live-item-status';
+import { liveItemStatus } from '../../../../../recoil-states/bid/live-item-list';
 
 import { View } from '../../../common/View';
 import { AuctionItem } from './AuctionItem';

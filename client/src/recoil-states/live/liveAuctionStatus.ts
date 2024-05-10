@@ -1,15 +1,15 @@
 import { atom, selector } from 'recoil';
-import { ChatResponse, ChattingRoom } from '../../_libs/types/chat';
 
+type liveAuctionStatus = 'BEFORE_START' | 'IN_AUCTION' | 'BEFORE_DESC' | 'IN_DESC' | 'END';
 const key = 'liveAuctionStatus';
 
-const chats = atom<ChattingRoom>({
+const liveAuctionStatus = atom<liveAuctionStatus>({
   key,
-  default: [],
+  default: 'BEFORE_START',
 });
 
-export const chatSelector = selector({
+export const liveAuctionStatusSelector = selector({
   key,
-  get: ({ get }) => get(chats),
-  set: ({ set }, value) => set(chats, value),
+  get: ({ get }) => get(liveAuctionStatus),
+  set: ({ set }, value) => set(liveAuctionStatus, value),
 });

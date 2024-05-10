@@ -1,6 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { keyframes } from '@emotion/react';
-import React, { useEffect } from 'react';
 import { HTMLAttributes } from 'react';
 import colors from '../../../design/colors';
 import { Spacing } from '../../common/Spacing';

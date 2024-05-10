@@ -1,17 +1,10 @@
 import { atom, selector } from 'recoil';
-import { BidSuccessResponse } from '../../_libs/types/bid';
 
 const key = 'timer';
 
-const timer = atom<BidSuccessResponse>({
+const timer = atom<number>({
   key,
-  default: {
-    itemId: -1,
-    userId: -1,
-    nickname: '',
-    price: 0,
-    time: -1,
-  },
+  default: 10,
 });
 
 export const timerSelector = selector({

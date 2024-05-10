@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { currentBidProcessSelector } from '../../../../../recoil-states/bid/current-order';
-import { liveItemStatus } from '../../../../../recoil-states/bid/live-item-status';
+import { liveItemStatus } from '../../../../../recoil-states/bid/live-item-list';
 import { useLiveInfo } from '../../../../hooks/useLiveInfo';
 import { bidPriceParse } from '../../../../util/bidPriceParse';
 import { Spacing } from '../../../common/Spacing';

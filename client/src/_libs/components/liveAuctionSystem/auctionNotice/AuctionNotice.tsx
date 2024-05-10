@@ -9,7 +9,7 @@ import { RoundButton } from '../../common/RoundButton';
 import { bidPriceParse } from '../../../util/bidPriceParse';
 import { useSocketEmitter, useSocketListener } from '../../../hooks/useSocket';
 import { useRecoilValue } from 'recoil';
-import { liveItemStatusSelector } from '../../../../recoil-states/bid/live-item-status';
+import { liveItemStatusSelector } from '../../../../recoil-states/bid/live-item-list';
 import { NoticeResponse } from '../../../types/chat';
 import { BidFailResponse, BidSuccessResponse } from '../../../types/bid';
 import { useLiveInfo } from '../../../hooks/useLiveInfo';

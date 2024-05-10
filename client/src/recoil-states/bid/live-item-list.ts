@@ -3,26 +3,26 @@ import { LiveItemResponse } from '../../_libs/types/live-item';
 
 const key = 'liveItemStatus';
 
-const liveItemStatus = atom<LiveItemResponse>({
+const liveItemList = atom<LiveItemResponse>({
   key,
   default: [],
 });
 
-export const liveItemStatusSelector = selector({
+export const liveItemListSelector = selector({
   key,
   get: ({ get }) => {
-    const itemList = get(liveItemStatus);
+    const itemList = get(liveItemList);
     return itemList;
   },
   set: ({ set }, value) => {
-    set(liveItemStatus, value);
+    set(liveItemList, value);
   },
 });
 
 export const liveItemLengthSelector = selector({
   key,
   get: ({ get }) => {
-    const itemList = get(liveItemStatus);
+    const itemList = get(liveItemList);
     return itemList.length;
   },
 });
