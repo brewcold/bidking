@@ -11,7 +11,6 @@ import { topBidderInfoSelector } from '../../../../recoil-states/bid/top-bidder'
 import { useAppSelector } from '../../../../redux-store/hooks';
 import { useLiveInfo } from '../../../hooks/useLiveInfo';
 import { validateBidPrice } from '../../../util/bidPriceParse';
-import { isUnderLimit } from '../../../util/price-validation';
 import { Alert } from '../../common/Alert';
 import { ConfirmButton } from '../../common/ConfirmButton';
 import { Input } from '../../common/Input';
@@ -42,7 +41,9 @@ export function BiddingForm() {
           disable={disable}
           btnType="progress"
           label={label}
-          onClick={() => (isUnderLimit(askingPrice) ? bid(auctionRoomId, targetItem, askingPrice, accessToken) : {})}
+          onClick={() =>
+            validateBidPrice(String(askingPrice)) && bid(auctionRoomId, targetItem, askingPrice, accessToken)
+          }
         />
       </View>
       <Spacing rem="2" />
