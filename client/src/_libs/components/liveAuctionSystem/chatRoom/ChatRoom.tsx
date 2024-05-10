@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { chatInputSelector } from '../../../../recoil-states/chat/chatInput';
 import { chatSelector } from '../../../../recoil-states/chat/chatroom';
 import { useLiveInfo } from '../../../hooks/useLiveInfo';
-import { useSocketListener, useSocketEmitterWithTrigger } from '../../../hooks/useSocket';
+import { useSocketListener, useSocketEmitter } from '../../../hooks/useSocket';
 import { ChatResponse, ChattingRoom, NewUserResponse } from '../../../types/chat';
 import { Input } from '../../common/Input';
 import { RoundButton } from '../../common/RoundButton';
@@ -33,7 +33,7 @@ export function ChatRoom() {
     })();
   }, [chats]);
 
-  const { trigger: chatTrigger } = useSocketEmitterWithTrigger('chat', {
+  const { EMIT: chatTrigger } = useSocketEmitter('chat', {
     nickname: roomInfo?.nickname,
     roomId: roomInfo?.auctionRoomId,
     msg: input.trim(),

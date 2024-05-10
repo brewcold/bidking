@@ -13,73 +13,59 @@ export const useSocketListener = <Res>(event: string, handler: (data: Res, ...ar
   const [err, setError] = useState<unknown[]>([]);
   const socket = useContext(SocketContext);
 
-  const stableHandler = useCallback(handler, deps || []);
+  const memoizedHandler = useCallback(handler, deps || []);
 
   useEffect(() => {
     try {
-      socket.on(event, stableHandler);
+      socket.on(event, memoizedHandler);
       setError([]);
     } catch (error) {
-      setError([...err, error]);
+      setError(prev => [...prev, error]);
     }
     return () => {
-      socket.off(event, stableHandler);
+      socket.off(event, memoizedHandler);
     };
-  }, [socket, event, stableHandler]);
+  }, [socket, event, memoizedHandler]);
 
-  return { error: err };
+  return { errors: err };
 };
 
 export interface socketEmitRequest {
   roomId: number | undefined;
 }
 
-export const useSocketEmitter = <T extends socketEmitRequest>(event: string, data: T) => {
+export const useSocketEmitter = <Req extends socketEmitRequest, Res = unknown>(event: string, data: Req) => {
   const [err, setError] = useState<unknown[]>([]);
+  const [isExecuting, setIsExecuting] = useState<boolean>(false);
+  const [response, setResponse] = useState<Res | null>(null);
   const socket = useContext(SocketContext);
   const roomId = data.roomId;
 
-  useEffect(() => {
-    try {
-      {
-        socket.emit(event, { data });
-        setError([]);
-      }
-    } catch (error) {
-      setError([...err, error]);
-    }
-    return () => {
-      socket.emit('leaveRoom', { roomId });
-    };
-  }, [socket, event, roomId]);
-
-  return { error: err };
-};
-
-export const useSocketEmitterWithTrigger = <T extends socketEmitRequest>(event: string, data: T) => {
-  const [err, setError] = useState<unknown[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const trigger = () => setLoading(true);
-  const socket = useContext(SocketContext);
-  const roomId = data.roomId;
-
-  useEffect(() => {
-    if (loading)
+  const EMIT = useCallback(() => {
+    return new Promise((resolve, reject) => {
       try {
         {
-          socket.emit(event, { data });
-          setError([]);
+          setIsExecuting(true);
+          socket.emit(event, { data }, (res: Res) => {
+            setResponse(res);
+            resolve(res);
+          });
         }
       } catch (error) {
-        setError([...err, error]);
-      } finally {
-        setLoading(false);
+        reject(error);
       }
+    });
+  }, [socket, event, data]);
+
+  useEffect(() => {
+    EMIT()
+      .then(() => setIsExecuting(false))
+      .catch(error => setError(prev => [...prev, error]));
+
     return () => {
       socket.emit('leaveRoom', { roomId });
     };
-  }, [socket, event, roomId, loading]);
+  }, [EMIT]);
 
-  return { error: err, trigger };
+  return { EMIT, response, errors: err, isExecuting };
 };

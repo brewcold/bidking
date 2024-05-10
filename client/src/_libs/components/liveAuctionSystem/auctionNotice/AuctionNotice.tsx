@@ -7,7 +7,7 @@ import { Input } from '../../common/Input';
 import { Spacing } from '../../common/Spacing';
 import { RoundButton } from '../../common/RoundButton';
 import { bidPriceParse } from '../../../util/bidPriceParse';
-import { useSocketEmitterWithTrigger, useSocketListener } from '../../../hooks/useSocket';
+import { useSocketEmitter, useSocketListener } from '../../../hooks/useSocket';
 import { useRecoilValue } from 'recoil';
 import { liveItemStatusSelector } from '../../../../recoil-states/bid/live-item-status';
 import { NoticeResponse } from '../../../types/chat';
@@ -33,7 +33,7 @@ export function AuctionNotice() {
     setNotice([msg, ...notice]);
   });
 
-  const { trigger: noticeTrigger } = useSocketEmitterWithTrigger('notice', {
+  const { EMIT: noticeTrigger } = useSocketEmitter('notice', {
     roomId: roomInfo?.auctionRoomId,
     msg: noticeInput.trim(),
   });
